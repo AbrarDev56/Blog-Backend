@@ -43,5 +43,14 @@ module.exports = createCoreController('api::blog.blog', ({ strapi }) => ({
         })
         // console.log(entries)
         ctx.body = entries
+    },
+
+    async getAllPostsFilters(ctx) {
+        const entries = await strapi.entityService.findMany('api::blog.blog', {
+            populate: '*',
+            filters: {}
+        })
+        // console.log(entries)
+        ctx.body = entries
     }
 }));
